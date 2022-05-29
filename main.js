@@ -1,7 +1,12 @@
-let onKeyUpCallback;
+let updateCardCallback;
 window.onkeyup = function(e) {
-	if (onKeyUpCallback) {
-		onKeyUpCallback();
+	if (updateCardCallback) {
+		updateCardCallback();
+	}
+}
+window.onclick = function(e) {
+	if (updateCardCallback) {
+		updateCardCallback();
 	}
 }
 
@@ -35,12 +40,11 @@ function showCard(root, german, slovak) {
 				row1.append(german);
 				cardShown = true;
 			} else {
-				onKeyUpCallback = null;
+				updateCardCallback = null;
 				resolve();
 			}
 		};
-		card.addEventListener('click', callback);
-		onKeyUpCallback = callback;
+		updateCardCallback = callback;
 	});
 }
 
