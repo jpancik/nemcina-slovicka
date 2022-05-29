@@ -1,0 +1,21 @@
+.cards-list {
+	max-width:  1024px;
+	margin: auto;
+}
+
+.card {
+	border: 1px solid lightgrey;
+    border-radius: 8px;
+    margin: 64px;
+}
+
+.row {
+	padding: 32px;
+	text-align: center;
+	font-size: 72px;
+	min-height: 84px;
+}
+
+.row:not(:last-child) {
+	border-bottom: 1px solid lightgrey;
+}
