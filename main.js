@@ -51,9 +51,12 @@ function showCard(root, german, slovak) {
 async function main() {
 	const cardsList = document.querySelector('.cards-list');
 	
+	let currentIndex = 1;
+	const totalCount = listOfWords.length;
 	for (const word of shuffle(listOfWords)) {
-		cardsList.innerHTML = '';
+		cardsList.innerHTML = `${currentIndex}/${totalCount}`;
 		await showCard(cardsList, word.german, word.slovak);
+		currentIndex += 1;
 	}
 
 	cardsList.innerHTML = 'Finished.';
