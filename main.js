@@ -4,7 +4,7 @@ window.onkeyup = function(e) {
 		updateCardCallback();
 	}
 }
-window.onclick = function(e) {
+window.onmouseup = function(e) {
 	if (updateCardCallback) {
 		updateCardCallback();
 	}
