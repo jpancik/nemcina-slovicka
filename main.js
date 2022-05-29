@@ -4,11 +4,6 @@ window.onkeyup = function(e) {
 		updateCardCallback(e);
 	}
 }
-window.onclick = function(e) {
-	if (updateCardCallback) {
-		updateCardCallback(e);
-	}
-}
 
 // https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 function shuffle(a) {
