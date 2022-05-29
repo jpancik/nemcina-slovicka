@@ -1,12 +1,12 @@
 let updateCardCallback;
 window.onkeyup = function(e) {
 	if (updateCardCallback) {
-		updateCardCallback();
+		updateCardCallback(e);
 	}
 }
-window.onmouseup = function(e) {
+window.onclick = function(e) {
 	if (updateCardCallback) {
-		updateCardCallback();
+		updateCardCallback(e);
 	}
 }
 
@@ -34,16 +34,18 @@ function showCard(root, german, slovak) {
 	root.append(card);
 
 	return new Promise(resolve => {
-		let cardShown = false;
-		const callback = () => {
-			if (!cardShown) {
+		let translationShown = false;
+		const callback = (e) => {
+			e.preventDefault();
+			if (!translationShown) {
 				row1.append(german);
-				cardShown = true;
+				translationShown = true;
 			} else {
 				updateCardCallback = null;
 				resolve();
 			}
 		};
+		card.addEventListener('click', callback);
 		updateCardCallback = callback;
 	});
 }
