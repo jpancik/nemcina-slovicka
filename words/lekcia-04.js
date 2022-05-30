@@ -54,7 +54,7 @@ const listOfWords = [
 {german:"dobry",slovak:"gut"},
 {german:"der Hausschlüssel, -",slovak:"kluc od domu"},
 {german:"hässlich",slovak:"skaredy"},
-{german:"dnes",slovak:"heute"},
+{german:"heute",slovak:"dnes"},
 {german:"Ich kenn mich in der Stadt schon aus.",slovak:"V meste sa uz vyznám."},
 {german:"im Sonderangebot",slovak:"v akcii"},
 {german:"in der Mitte",slovak:"v strede"},
