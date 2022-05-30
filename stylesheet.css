@@ -1,12 +1,21 @@
+body {
+	font-size: 32px;
+}
+
 .cards-list {
 	max-width:  1024px;
 	margin: auto;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px;
 }
 
 .card {
+	width: 100%;
 	border: 1px solid lightgrey;
     border-radius: 8px;
-    margin: 64px;
+    margin: 64px 0;
 }
 
 .row {
@@ -18,4 +27,11 @@
 
 .row:not(:last-child) {
 	border-bottom: 1px solid lightgrey;
+}
+
+.forgot-button {
+	font-size: 72px;
+	padding: 32px;
+	width: fit-content;
+	margin-top: 32px;
 }

@@ -26,18 +26,27 @@ function showCard(root, german, slovak) {
 	card.append(row1);
 	card.append(row2);
 
+	const forgotButton = document.createElement('button');
+	forgotButton.append('Nevedel som');
+	forgotButton.classList.add('forgot-button');
+
 	root.append(card);
 
 	return new Promise(resolve => {
 		let translationShown = false;
 		const callback = (e) => {
-			e.preventDefault();
 			if (!translationShown) {
 				row1.append(german);
 				translationShown = true;
+				
+				root.append(forgotButton);
+				forgotButton.addEventListener('click', () => {
+					updateCardCallback = null;
+					resolve(false);	
+				});
 			} else {
 				updateCardCallback = null;
-				resolve();
+				resolve(true);
 			}
 		};
 		card.addEventListener('click', callback);
@@ -48,12 +57,23 @@ function showCard(root, german, slovak) {
 async function main() {
 	const cardsList = document.querySelector('.cards-list');
 	
-	let currentIndex = 1;
-	const totalCount = listOfWords.length;
-	for (const word of shuffle(listOfWords)) {
-		cardsList.innerHTML = `${currentIndex}/${totalCount}`;
-		await showCard(cardsList, word.german, word.slovak);
-		currentIndex += 1;
+	let currentWordsList = [];
+	let nextWordsList = listOfWords;
+
+	while (nextWordsList.length > 0) {
+		currentWordsList = nextWordsList;
+		nextWordsList = [];
+
+		let currentIndex = 1;
+		const totalCount = currentWordsList.length;
+		for (const word of shuffle(currentWordsList)) {
+			cardsList.innerHTML = `${currentIndex}/${totalCount} + ${nextWordsList.length} znova`;
+			const remembers = await showCard(cardsList, word.german, word.slovak);
+			if(!remembers) {
+				nextWordsList.push(word);
+			}
+			currentIndex += 1;
+		}
 	}
 
 	cardsList.innerHTML = 'Finished.';
