@@ -35,3 +35,9 @@ body {
 	width: fit-content;
 	margin-top: 32px;
 }
+
+li {
+	font-size: 32px;
+	margin-left: 32px;
+	margin-bottom: 32px;
+}
