@@ -167,4 +167,7 @@ const listOfWords = [
 {german:"zum Glück",slovak:"nastastie"},
 {german:"zurückkommen",slovak:"vrátit sa spät"},
 {german:"die Zwiebel, -n",slovak:"cibula"},
+{german:"sonst",slovak:"inak (otherwise)"},
+{german:"dringend",slovak:"okamzite/urgentne"},
+{german:"der Angestellte, -n",slovak:"zamestnanec"},
 ];

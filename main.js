@@ -60,6 +60,9 @@ async function main() {
 	let currentWordsList = [];
 	let nextWordsList = listOfWords;
 
+	const url = window.location.href;
+	const swap = url.indexOf('swap') !== -1;
+
 	while (nextWordsList.length > 0) {
 		currentWordsList = nextWordsList;
 		nextWordsList = [];
@@ -68,7 +71,12 @@ async function main() {
 		const totalCount = currentWordsList.length;
 		for (const word of shuffle(currentWordsList)) {
 			cardsList.innerHTML = `${currentIndex}/${totalCount} + ${nextWordsList.length} znova`;
-			const remembers = await showCard(cardsList, word.german, word.slovak);
+			let remembers;
+			if (swap) {
+				remembers = await showCard(cardsList, word.slovak, word.german);
+			} else {
+				remembers = await showCard(cardsList, word.german, word.slovak)
+			}
 			if(!remembers) {
 				nextWordsList.push(word);
 			}
