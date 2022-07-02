@@ -179,4 +179,6 @@ const listOfWords = [
 {german:"der Staubsauger,",slovak:"vysávac"},
 {german:"der Besen,",slovak:"metla"},
 {german:"der Eimer, - (Ö: der Kübel, - )",slovak:"vedro"},
+{german:"beeindruckt",slovak:"ohromeny"},
+{german:"überall",slovak:"all over"},
 ];
