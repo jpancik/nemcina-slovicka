@@ -62,6 +62,13 @@ async function main() {
 
 	const url = window.location.href;
 	const swap = url.indexOf('swap') !== -1;
+	const pickRandom = url.indexOf('random') !== -1;
+
+	// If random param is present, shuffle and only pick 20 words.
+	if (pickRandom) {
+		const wordsToPick = 20;
+		nextWordsList = shuffle(nextWordsList).slice(0, wordsToPick);
+	}
 
 	while (nextWordsList.length > 0) {
 		currentWordsList = nextWordsList;
