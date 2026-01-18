@@ -30,6 +30,10 @@ function showCard(root, german, slovak) {
 	forgotButton.append('Nevedel som');
 	forgotButton.classList.add('forgot-button');
 
+	const nextButton = document.createElement('button');
+	nextButton.append('Next');
+	nextButton.classList.add('next-button');
+
 	root.append(card);
 
 	return new Promise(resolve => {
@@ -39,14 +43,22 @@ function showCard(root, german, slovak) {
 				row1.append(german);
 				translationShown = true;
 				
-				root.append(forgotButton);
+				const buttonsContainer = document.createElement('div');
+				buttonsContainer.classList.add('buttons-container');
+				buttonsContainer.append(forgotButton);
+				buttonsContainer.append(nextButton);
+
+				root.append(buttonsContainer);
+				
 				forgotButton.addEventListener('click', () => {
 					updateCardCallback = null;
 					resolve(false);	
 				});
-			} else {
-				updateCardCallback = null;
-				resolve(true);
+
+				nextButton.addEventListener('click', () => {
+					updateCardCallback = null;
+					resolve(true);
+				});
 			}
 		};
 		card.addEventListener('click', callback);
